@@ -1,0 +1,25 @@
+{
+  "name": "qian",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MiyanagaTeru/qian.git"
+  },
+  "author": "Teru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MiyanagaTeru/qian/issues"
+  },
+  "homepage": "https://github.com/MiyanagaTeru/qian#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "react": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  }
+}
