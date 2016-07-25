@@ -1,14 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Menu = () =>
+const Waiting = () =>
 	<div>
-		I am a menu.
+		Qians waiting.
 	</div>
 
 
 const mapStateToProps = state => ({
-	data: state
+	qians: state.qians.filter(qian => qian.status === 'waiting')
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => ({
 	}
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default connect(mapStateToProps, mapDispatchToProps)(Waiting)

@@ -1,13 +1,18 @@
 import React from 'react'
 
-import Menu from '../containers/Menu'
+import Waiting from '../containers/Waiting';
+import Current from '../containers/Current';
+import Done from '../containers/Done';
+
+import styles from './App.css';
 
 class App extends React.Component {
 	render () {
 		return (
-				<div>
-					<Menu />
-					<input />
+				<div className={ styles.wrapper }>
+					<Waiting />
+					<Current />
+					<Done />
 				</div>
 			)
 	}
