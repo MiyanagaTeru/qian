@@ -14,7 +14,7 @@ const Current = ({ qians }) =>
 
 
 const mapStateToProps = state => ({
-	qians: state.qians
+	qians: state.qians.filter(qian => qian.status === 'current')
 })
 
 const mapDispatchToProps = dispatch => ({
