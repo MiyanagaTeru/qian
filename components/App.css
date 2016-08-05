@@ -2,9 +2,4 @@
 	width: 50%;
 	min-width: 500px;
 	margin: 0 auto;
-	transform: translateX(50%);
-}
-
-:fullscreen a {
-    display: flex
 }

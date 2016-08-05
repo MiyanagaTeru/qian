@@ -33,7 +33,7 @@ app.use('/savedata', function(req, res) {
 //'initqians/user={$user}'
 app.post('/initqians', function(req, res) {
 	var user = req.query.user
-	var filePath = __dirname + '/public/' + user + '/initial.json';
+	var filePath = __dirname + '/public/' + user + '/data.json';
 	fs.readFile(filePath, function (err, data) {
 		if (err) throw err;
 		res.type('json');

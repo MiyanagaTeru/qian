@@ -13,7 +13,7 @@ const Qian = ({ qian }) => (
 		<div className={styles.back}>
 			{ qian.description }
 		</div>
-	</div> 
+	</div>
 )
 
 export default Qian;
