@@ -16,23 +16,23 @@ app.get("/", function(req, res) {
 	res.sendFile(__dirname + '/index.html')
 })
 
-app.use('/savedata', function(req, res) {
-	var body = ''
-	var filePath = __dirname + '/public/data/data-' + new Date() + '.json'
-	// req.on('data', function(data) {
-	// 	body += data
-	// })
-	res.end('req')
-	// req.on('end', function (){
-	// 	fs.writeFile(filePath, body, function() {
-	// 		res.end('success! Data is' + JSON.stringify(body));
-	// 	});
-	// });
-})
+// app.post('/saveqians', function(req, res) {
+// 	var user = req.query.user
+// 	var body = ''
+// 	var filePath = __dirname + '/public/' + user + 'data.json'
+// 	req.on('data', function(data) {
+// 		body += data
+// 	})
+// 	// res.end('req')
+// 	// fs.writeFile(filePath, body, function(err, data) {
+// 	// 		if (err) throw err;
+// 			res.end('success! Data is' + JSON.stringify(body));
+// 	// 	});
+// 	// });
+// })
 
 //'initqians/user={$user}'
 app.post('/initqians', function(req, res) {
-	var user = req.query.user
 	var filePath = __dirname + '/public/' + user + '/data.json';
 	fs.readFile(filePath, function (err, data) {
 		if (err) throw err;

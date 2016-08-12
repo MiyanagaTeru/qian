@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
+import saveDataMiddleware from './utils/saveDataMiddleware'
 
 import qianApp from './reducers'
 import App from './components/App'
@@ -12,7 +13,7 @@ import bootstrap from './bootstrap'
 let store = createStore(
 	qianApp,
 	compose(
-		applyMiddleware(thunk),
+		applyMiddleware(thunk, saveDataMiddleware),
 		window.devToolsExtension && window.devToolsExtension()
 	)
 )

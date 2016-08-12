@@ -1,14 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const Done = () =>
-	<div>
+import Qian from '../components/Qian';
+
+import styles from './containers.css'
+
+const Done = ({ qians, visibleContainer }) =>
+	<div className={visibleContainer === 'Done' ? '': styles.hidden}>
 		Qians done.
+		{
+			qians.map((qian, i) =>
+				<Qian key={i} qian={qian} />
+			)
+		}
 	</div>
 
 
 const mapStateToProps = state => ({
-	qians: state.qians.filter(qian => qian.status === 'done')
+	qians: state.qians.filter(qian => qian.status === 'done'),
+	visibleContainer: state.visibleContainer
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AddQian = ({onChange, onSubmit}) => (
+const AddQian = ({onChange, onSubmit, newQian}) => (
 	<form onSubmit={ e => (e.preventDefault(), onSubmit())}>
 		<input
 			type='text'
@@ -8,6 +8,7 @@ const AddQian = ({onChange, onSubmit}) => (
 			onChange={ e =>
 				onChange( e.target.name, e.target.value)
 			}
+			value={newQian.title}
 			required
 		/>
 		<input
@@ -16,6 +17,7 @@ const AddQian = ({onChange, onSubmit}) => (
 			onChange={ e =>
 				onChange( e.target.name, e.target.value)
 			}
+			value={newQian.description}
 		/>
 		<input
 			type='submit'

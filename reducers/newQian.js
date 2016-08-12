@@ -5,7 +5,9 @@ const newQian = (state = {}, action) => {
 			return {
 				...state,
 				...action.data
-			}
+			};
+		case 'ADD_QIAN':
+			return {};
 		default:
 			return state;
 	}
