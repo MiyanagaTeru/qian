@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	onChange: (name, value) => dispatch(actions.editNewQian({[name]:value})),
 	onSubmit: newQian => dispatch(actions.addQian(newQian)),
-	updateQian: (id, status) => (dispatch(actions.updateQian(id, status)), dispatch(actions.asyncSaveQians()))
+	updateQian: (id, status) => dispatch(actions.updateQian(id, status))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Waiting)
