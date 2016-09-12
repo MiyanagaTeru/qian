@@ -1,14 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import actions from '../actions'
+import actions from '../actions';
 
+import styles from './Nav.css';
 
 const Nav = ({ updateVisibleContainer }) => (
-	<div>
-		<span onClick={ () => updateVisibleContainer('Waiting') }> Waiting </span>
-		<span onClick={ () => updateVisibleContainer('Current') }> Current </span>
-		<span onClick={ () => updateVisibleContainer('Done') }> Done </span>
+	<div className={styles.wrapper}>
+		<div
+			className={styles.item}
+			onClick={ () => updateVisibleContainer('Waiting') }
+		>
+			Waiting
+		</div>
+		<div
+			className={styles.item}
+			onClick={ () => updateVisibleContainer('Current') }
+		>
+			Current
+		</div>
+		<div
+			className={styles.item}
+			onClick={ () => updateVisibleContainer('Done') }
+		>
+			Done
+		</div>
 	</div>
 )
 
