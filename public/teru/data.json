@@ -67,9 +67,9 @@
     {
         "title": "buy 1 coffee",
         "id": 7,
-        "status": "waiting",
+        "status": "current",
         "createDate": "2016-08-29T12:23:23-04:00",
-        "startDate": "",
+        "startDate": "2016-11-22T12:29:16-05:00",
         "completeDate": "",
         "deleteDate": ""
     },

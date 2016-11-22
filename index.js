@@ -14,7 +14,7 @@ let store = createStore(
 	qianApp,
 	compose(
 		applyMiddleware(thunk, saveDataMiddleware),
-		window.devToolsExtension && window.devToolsExtension()
+		window.devToolsExtension ? window.devToolsExtension() : f => f
 	)
 )
 
