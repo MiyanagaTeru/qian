@@ -1,7 +1,13 @@
+.background {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #E1DBDB;
+}
 .wrapper {
 	width: 100%;
-	max-width: 300px;
-	min-height: 600px;
-/*	margin: 0 auto;
-*/	border: 2px solid #dcdcdc;
+	max-width: 560px;
+	height: calc(100% - 16px);
+	margin: 16px auto 0;
+	background-color: #fff;
 }

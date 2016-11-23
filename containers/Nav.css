@@ -1,18 +1,25 @@
 .wrapper {
-	width: 100%;
-	height: 30px;
+	height: 75px;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 }
 
 .item {
-	width: 30%;
+	width: 33%;
+	height: 65px;
 	text-align: center;
-	border: 1px solid #dcdcdc;
 	cursor: pointer;
-	line-height: 30px;
+	line-height: 65px;
+	background-color: #E899CF;
+	font-size: 32px;
+	color: #fff;
+	transition: top 0.2s ease;
+	position: relative;
+	top: 0;
 }
 
-.item:active {
-	transform: scale(0.95);
+.selectedItem {
+	background-color: #FFD484;
+	position: relative;
+	top: 10px;
 }

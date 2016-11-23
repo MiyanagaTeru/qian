@@ -5,31 +5,34 @@ import actions from '../actions';
 
 import styles from './Nav.css';
 
-const Nav = ({ updateVisibleContainer }) => (
+const Nav = ({
+	visibleContainer,
+	updateVisibleContainer
+}) => (
 	<div className={styles.wrapper}>
 		<div
-			className={styles.item}
+			className={`${styles.item} ${visibleContainer === 'Waiting' && styles.selectedItem}`}
 			onClick={ () => updateVisibleContainer('Waiting') }
 		>
-			Waiting
+			签筒
 		</div>
 		<div
-			className={styles.item}
+			className={`${styles.item} ${visibleContainer === 'Current' && styles.selectedItem}`}
 			onClick={ () => updateVisibleContainer('Current') }
 		>
-			Current
+			进行中
 		</div>
 		<div
-			className={styles.item}
+			className={`${styles.item} ${visibleContainer === 'Done' && styles.selectedItem}`}
 			onClick={ () => updateVisibleContainer('Done') }
 		>
-			Done
+			已完成
 		</div>
 	</div>
 )
 
 const mapStateToProps = state => ({
-
+	visibleContainer: state.visibleContainer
 })
 
 const mapDispatchToProps = dispatch => ({
