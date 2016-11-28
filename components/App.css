@@ -9,5 +9,9 @@
 	max-width: 560px;
 	height: calc(100% - 16px);
 	margin: 16px auto 0;
-	background-color: #fff;
+	background-color: #C7C7C7;
+}
+
+.content {
+	padding: 8px 0;
 }

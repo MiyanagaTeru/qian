@@ -2,7 +2,7 @@ import asyncInitQians from './asyncInitQians'
 import asyncSaveQians from './asyncSaveQians'
 import addQian from './addQian'
 import editNewQian from './editNewQian'
-import updateVisibleContainer from './updateVisibleContainer'
+import updateEStatus from './updateEStatus'
 import updateQian from './updateQian'
 
 const actions = {
@@ -10,7 +10,7 @@ const actions = {
 	asyncSaveQians,
 	addQian,
 	editNewQian,
-	updateVisibleContainer,
+	updateEStatus,
 	updateQian
 };
 

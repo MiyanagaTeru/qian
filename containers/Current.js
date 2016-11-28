@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import actions from '../actions'
 import Qian from '../components/Qian';
 
 import styles from './containers.css'
 
-const Current = ({ visibleContainer, qians, updateQian }) =>
+const Current = ({ eStatus, qians, updateQian, updateEStatus }) =>
 	<div className={[
-		visibleContainer === 'Current' ? '': styles.hidden
+		eStatus.visibleContainer === 'Current' ? '': styles.hidden
 	].join(' ')}>
 		{
 			qians.map((qian, i) =>
-				<Qian key={i} qian={qian} updateQian={updateQian}/>
+				<Qian key={i} qian={qian} eStatus={eStatus} updateQian={updateQian} updateEStatus={updateEStatus}/>
 			)
 		}
 	</div>
@@ -20,11 +21,9 @@ const Current = ({ visibleContainer, qians, updateQian }) =>
 
 const mapStateToProps = state => ({
 	qians: state.qians.filter(qian => qian.status === 'current'),
-	visibleContainer: state.visibleContainer
-})
+	eStatus: state.eStatus
+});
 
-const mapDispatchToProps = dispatch => ({
-	updateQian: (id, status) => dispatch(actions.updateQian(id, status))
-})
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Current)

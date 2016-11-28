@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
+import actions from '../actions'
 import Qian from '../components/Qian';
 
 import styles from './containers.css'
 
-const Done = ({ qians, visibleContainer }) =>
-	<div className={visibleContainer === 'Done' ? '': styles.hidden}>
-		Qians done.
+const Done = ({ qians, eStatus, updateQian, updateEStatus }) =>
+	<div className={eStatus.visibleContainer === 'Done' ? '': styles.hidden}>
 		{
 			qians.map((qian, i) =>
-				<Qian key={i} qian={qian} />
+				<Qian key={i} qian={qian} eStatus={eStatus} updateQian={updateQian} updateEStatus={updateEStatus}/>
 			)
 		}
 	</div>
@@ -18,13 +19,9 @@ const Done = ({ qians, visibleContainer }) =>
 
 const mapStateToProps = state => ({
 	qians: state.qians.filter(qian => qian.status === 'done'),
-	visibleContainer: state.visibleContainer
-})
+	eStatus: state.eStatus
+});
 
-const mapDispatchToProps = dispatch => ({
-	onButtonClick: data => {
-		return false
-	}
-})
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Done)

@@ -1,5 +1,6 @@
-import React from 'react'
-import { connect } from 'react-redux'
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import actions from '../actions';
 
@@ -7,36 +8,34 @@ import styles from './Nav.css';
 
 const Nav = ({
 	visibleContainer,
-	updateVisibleContainer
+	updateEStatus
 }) => (
 	<div className={styles.wrapper}>
 		<div
 			className={`${styles.item} ${visibleContainer === 'Waiting' && styles.selectedItem}`}
-			onClick={ () => updateVisibleContainer('Waiting') }
+			onClick={ () => updateEStatus('visibleContainer', 'Waiting') }
 		>
 			签筒
 		</div>
 		<div
 			className={`${styles.item} ${visibleContainer === 'Current' && styles.selectedItem}`}
-			onClick={ () => updateVisibleContainer('Current') }
+			onClick={ () => updateEStatus('visibleContainer', 'Current') }
 		>
 			进行中
 		</div>
 		<div
 			className={`${styles.item} ${visibleContainer === 'Done' && styles.selectedItem}`}
-			onClick={ () => updateVisibleContainer('Done') }
+			onClick={ () => updateEStatus('visibleContainer', 'Done') }
 		>
 			已完成
 		</div>
 	</div>
-)
+);
 
 const mapStateToProps = state => ({
-	visibleContainer: state.visibleContainer
-})
+	visibleContainer: state.eStatus.visibleContainer
+});
 
-const mapDispatchToProps = dispatch => ({
-	updateVisibleContainer: visibleContainer => dispatch(actions.updateVisibleContainer(visibleContainer))
-})
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Nav)
+export default connect(mapStateToProps, mapDispatchToProps)(Nav);

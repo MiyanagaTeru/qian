@@ -14,9 +14,11 @@ class App extends React.Component {
 			<div className={ styles.background }>
 				<div className={ styles.wrapper }>
 					<Nav />
-					<Waiting />
-					<Current />
-					<Done />
+					<div className={styles.content}>
+						<Waiting />
+						<Current />
+						<Done />
+					</div>
 				</div>
 			</div>
 		)

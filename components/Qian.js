@@ -2,30 +2,48 @@ import React from 'react';
 
 import styles from './Qian.css';
 
-const Qian = ({ qian, updateQian }) => (
-	<div>
+const Qian = ({ qian, updateQian, eStatus, updateEStatus }) => (
+	<div className={styles.wrapper}>
 		{
 			qian.status === 'waiting' ?
-				<span onClick={ e => updateQian(qian.id, 'deleted') }> X </span> :
-				''
+				<div
+					className={styles.cancel}
+					onClick={ e => updateQian(qian.id, 'deleted') }>
+					取消
+				</div> :
+				<div className={styles.void}></div>
 		}
-		<div className={[
-				styles.wrapper,
-				styles[qian.status]
-			].join(' ')}>
-			<div className={styles.front}>
+		<div
+			className={[
+				styles.qianWrapper,
+				eStatus[`qian${qian.id}`] === 'back-up' ? styles['back-up'] : ''
+			].join(' ')}
+			>
+			<div
+				onClick={ e => updateEStatus(`qian${qian.id}`, 'back-up') }
+				className={styles.front}>
 				{ qian.title }
 			</div>
-			<div className={styles.back}>
+			<div
+				onClick={ e => updateEStatus(`qian${qian.id}`, '') }
+				className={styles.back}>
 				{ qian.description }
 			</div>
 		</div>
 		{
 			qian.status === 'waiting' ?
-				<span onClick={ e => updateQian(qian.id, 'current') }> + </span> :
+				<div
+					className={styles.add}
+					onClick={ e => updateQian(qian.id, 'current') }>
+					添加
+				</div> :
 				qian.status === 'current' ?
-					<span onClick={ e => updateQian(qian.id, 'done') }> Done </span> :
-					''
+					<div
+						className={styles.done}
+						onClick={ e => updateQian(qian.id, 'done') }>
+						完成
+					</div> :
+					<div className={styles.void}></div>
 		}
 	</div>
 )
