@@ -1,21 +1,39 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-import actions from '../actions'
-import AddQian from '../components/AddQian'
-import Qian from '../components/Qian'
+import actions from '../actions';
+import AddQian from '../components/AddQian';
+import Qian from '../components/Qian';
 
-import styles from './containers.css'
+import styles from './containers.css';
 
-const Waiting = ({ eStatus, qians, newQian, onChange, onSubmit, updateQian, updateEStatus }) =>
+const Waiting = ({
+	eStatus,
+	qians,
+	newQian,
+	editNewQian,
+	addQian,
+	updateQian,
+	updateEStatus
+}) =>
 	<div className={eStatus.visibleContainer === 'Waiting' ? '': styles.hidden}>
-		{
-			qians.map((qian, i) =>
-				<Qian key={i} qian={qian} eStatus={eStatus} updateQian={updateQian} updateEStatus={updateEStatus}/>
-			)
-		}
-		<AddQian onChange={onChange} onSubmit={() => onSubmit(newQian) } newQian={newQian} />
+		<ReactCSSTransitionGroup
+			transitionName="changeStatus"
+			transitionEnterTimeout={1}
+			transitionLeaveTimeout={500}>
+			{
+				qians.map(qian =>
+					<Qian key={qian.id} qian={qian} eStatus={eStatus} updateQian={updateQian} updateEStatus={updateEStatus}/>
+				)
+			}
+		</ReactCSSTransitionGroup>
+		<AddQian
+			onChange={ e => editNewQian({[e.target.name]: e.target.value}) }
+			onSubmit={ () => addQian(newQian) }
+			newQian={newQian}
+		/>
 	</div>
 
 
@@ -25,10 +43,6 @@ const mapStateToProps = state => ({
 	eStatus: state.eStatus
 })
 
-const mapDispatchToProps = dispatch => ({
-	onChange: (name, value) => dispatch(actions.editNewQian({[name]:value})),
-	onSubmit: newQian => dispatch(actions.addQian(newQian)),
-	...bindActionCreators(actions, dispatch)
-})
+const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Waiting)

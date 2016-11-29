@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import actions from '../actions'
 import Qian from '../components/Qian';
@@ -12,10 +13,21 @@ const Current = ({ eStatus, qians, updateQian, updateEStatus }) =>
 		eStatus.visibleContainer === 'Current' ? '': styles.hidden
 	].join(' ')}>
 		{
-			qians.map((qian, i) =>
-				<Qian key={i} qian={qian} eStatus={eStatus} updateQian={updateQian} updateEStatus={updateEStatus}/>
-			)
+			qians.length < 1 ?
+				<div className={styles.placeholder}>
+					没有进行中的心愿
+				</div> : ''
 		}
+		<ReactCSSTransitionGroup
+			transitionName="changeStatus"
+			transitionEnterTimeout={1}
+			transitionLeaveTimeout={500}>
+			{
+				qians.map(qian =>
+					<Qian key={qian.id} qian={qian} eStatus={eStatus} updateQian={updateQian} updateEStatus={updateEStatus}/>
+				)
+			}
+		</ReactCSSTransitionGroup>
 	</div>
 
 

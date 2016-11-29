@@ -7,3 +7,14 @@
 	padding: 0;
 	font-family: 'Hiragino Sans', arial;
 }
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: #E1DBDB;
+}
+:global #root {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}

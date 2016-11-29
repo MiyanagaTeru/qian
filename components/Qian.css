@@ -1,3 +1,22 @@
+:global .changeStatus-leave {
+	position: relative;
+	opacity: 1;
+	max-height: 120px;
+}
+
+:global .changeStatus-leave-active {
+	opacity: 0;
+	max-height: 0;
+	transition: all 0.5s ease;
+}
+
+.wrapper {
+	display: flex;
+	height: 120px;
+	justify-content: space-between;
+	padding: 2px 0;
+}
+
 .cancel,
 .add,
 .done,
@@ -10,6 +29,7 @@
 	width: 60px;
 	writing-mode: vertical-lr;
 	visibility: hidden;
+	position: relative;
 }
 
 .wrapper:hover .cancel,
@@ -68,5 +88,50 @@
 
 .back-up .back {
 	transform: rotateX(0deg);
+}
+
+.inputsWrapper {
+	color: #FFF;
+	font-size: 24px;
+	height: 100%;
+	position: relative;
+	text-align: center;
+	width: 430px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.inputWrapper {
+	height: 59px;
+	background-color: #FFD484;
+	line-height: 59px;
+}
+
+.input {
+	width: calc(100% - 30px);
+	font-size: 24px;
+	margin: auto;
+	appearance: none;
+	border: none;
+	background-color: inherit;
+	outline: none;
+	padding: 0 6px;
+	color: #fff;
+}
+
+.input:focus {
+	background-color: #F3BD58;
+}
+
+.inputSubmit {
+	appearance: none;
+	opacity: 0;
+	width: 60px;
+	height: 120px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	cursor: pointer;
 }
 
