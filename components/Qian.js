@@ -34,13 +34,19 @@ const Qian = ({ qian, updateQian, eStatus, updateEStatus }) => (
 			qian.status === 'waiting' ?
 				<div
 					className={styles.add}
-					onClick={ e => updateQian(qian.id, 'current') }>
+					onClick={ e => {
+						updateQian(qian.id, 'current');
+						updateEStatus(`qian${qian.id}`, '');
+					}}>
 					添加
 				</div> :
 				qian.status === 'current' ?
 					<div
 						className={styles.done}
-						onClick={ e => updateQian(qian.id, 'done') }>
+						onClick={ e => {
+							updateQian(qian.id, 'done');
+							updateEStatus(`qian${qian.id}`, '');
+						}}>
 						完成
 					</div> :
 					<div className={styles.void}></div>

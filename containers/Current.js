@@ -4,11 +4,12 @@ import { bindActionCreators } from 'redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 import actions from '../actions'
+import ChouQian from '../components/ChouQian';
 import Qian from '../components/Qian';
 
 import styles from './containers.css'
 
-const Current = ({ eStatus, qians, updateQian, updateEStatus }) =>
+const Current = ({ eStatus, qians, waitingIds, updateQian, updateEStatus }) =>
 	<div className={[
 		eStatus.visibleContainer === 'Current' ? '': styles.hidden
 	].join(' ')}>
@@ -28,11 +29,36 @@ const Current = ({ eStatus, qians, updateQian, updateEStatus }) =>
 				)
 			}
 		</ReactCSSTransitionGroup>
+		{
+			waitingIds.length > 0 &&
+			<ChouQian
+				chouing={eStatus.chouing}
+				onClick={ e => {
+					updateEStatus('chouing', 1);
+					let count = 2;
+					let animating = setInterval(
+						() => {
+							if (count > 6) {
+								clearInterval(animating);
+								count = 2;
+								updateEStatus('chouing', false);
+								const rdmId = waitingIds[Math.floor((Math.random() * waitingIds.length))];
+								updateQian(rdmId, 'current');
+								updateEStatus(`qian${rdmId}`, '');
+							} else {
+								updateEStatus('chouing', count++)
+							}
+						},
+						300
+					);
+			}}/>
+		}
 	</div>
 
 
 const mapStateToProps = state => ({
 	qians: state.qians.filter(qian => qian.status === 'current'),
+	waitingIds: state.qians.filter(qian => qian.status === 'waiting').map(qian => qian.id),
 	eStatus: state.eStatus
 });
 

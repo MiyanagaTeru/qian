@@ -134,4 +134,46 @@
 	top: 0;
 	cursor: pointer;
 }
+.chouing {
+	color: #FFF;
+	cursor: pointer;
+	font-size: 24px;
+	height: 100%;
+	line-height: 120px;
+	perspective: 400px;
+	position: relative;
+	text-align: center;
+	width: 430px;
+	background-color: #FFD484;
+	margin: 0 auto;
+}
 
+.chouQian {
+	cursor: pointer;
+	height: 120px;
+	margin: 0px auto;
+	width: 210px;
+	color: #fff;
+	background-color: #E899CF;
+	font-size: 24px;
+	text-align: center;
+	line-height: 120px;
+	transition: none;
+}
+
+@media (max-width: 767px) {
+	.qianWrapper,
+	.chouing,
+	.inputsWrapper {
+		width: calc(100% - 128px);
+	}
+	.chouQian {
+		width: 40%;
+	}
+	.cancel,
+	.add,
+	.done,
+	.void {
+		visibility: visible;
+	}
+}
